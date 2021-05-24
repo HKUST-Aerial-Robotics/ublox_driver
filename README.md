@@ -42,7 +42,7 @@ Our software can take the serial stream from the u-blox receiver as an input sou
 ```
 sudo usermod -aG dialout $USER
 ```
-Open *config/config.yaml*, set `online` and `publish` to 1, and adjust `input_serial_port` and `serial_baud_rate` according to your setting. Run the package with:
+Open *config/driver_config.yaml*, set `online` and `to_ros` to 1, and adjust `input_serial_port` and `serial_baud_rate` according to your setting. Run the package with:
 ```
 roslaunch ublox_driver ublox_driver.launch
 ```
@@ -81,7 +81,7 @@ Similar to the online receiver manner, all three output options are also support
 
 
 ## 5. Synchronize System Time
-In addition to message parsing and delivery, *ublox_driver* can also synchronize the local system time to the global time without the need of internet connection. Note that such synchronization is only in a coarse level and the accuracy is not guaranteed. To perform such synchronization, you need to set `UTC_OFFSET` variable in `src/sync_system_time.cpp` according to your timezone. Recompile and launch the driver with:
+In addition to message parsing and delivery, *ublox_driver* can also synchronize the local system time to the global time without the need of internet connection. Note that such synchronization is only in a coarse level and the accuracy is not guaranteed. To perform such synchronization, you need to set `UTC_OFFSET` macro in `src/sync_system_time.cpp` according to your timezone. Recompile and launch the driver with:
 ```
 roslaunch ublox_driver ublox_driver.launch
 ```
