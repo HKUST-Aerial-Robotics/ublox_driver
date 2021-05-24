@@ -1,0 +1,6 @@
+<launch>
+    <arg name="config_path" default = "$(find ublox_driver)/config/driver_config.yaml" />
+    <node name="ublox_driver" pkg="ublox_driver" type="ublox_driver" output="screen">
+        <param name="config_file" type="string" value="$(arg config_path)" />
+    </node>
+</launch>

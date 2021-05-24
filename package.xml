@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>ublox_driver</name>
+  <version>0.0.0</version>
+  <description>A driver for u-blox receiver (ZED-F9P) with ros support</description>
+
+  <maintainer email="shaozu.cao@gmail.com">CAO Shaozu</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>gnss_comm</build_depend>
+
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>gnss_comm</run_depend>
+</package>
