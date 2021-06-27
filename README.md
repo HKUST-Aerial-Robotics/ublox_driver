@@ -38,7 +38,7 @@ catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
 ## 3. Run with your u-blox receiver
-Our software can take the serial stream from the u-blox receiver as an input source. Before running the package, you need to configure your receiver using [u-center](https://www.u-blox.com/en/product/u-center) to output at least `UBX-RXM-RAWX`, `UBX-RXM-SFRBX` and `UBX-NAV-PVT` messages to a specific serial port. Then connecting your computer(Linux) with the receiver, make sure the serial port appears as a file in the `/dev/` directory. Then add your account to `dialout` group to obtain permission on serial r/w operation via (no need to substitute $USER):
+Our software can take the serial stream from the u-blox receiver as an input source. Before running the package, you need to configure your receiver using [u-center](https://www.u-blox.com/en/product/u-center) to output at least `UBX-RXM-RAWX`, `UBX-RXM-SFRBX` and `UBX-NAV-PVT` messages to a specific serial port (a sample config used in our system can be found at *config/ucenter_config_f9p_gvins.txt*). Then connecting your computer(Linux) with the receiver, make sure the serial port appears as a file in the `/dev/` directory. Then add your account to `dialout` group to obtain permission on serial r/w operation via (no need to substitute $USER):
 ```
 sudo usermod -aG dialout $USER
 ```
@@ -65,7 +65,7 @@ cd app/consapp/str2str/gcc/
 make
 ./str2str -in ntrip://${NTRIP_SITE}:${NTRIP_PORT}/${MOUNT_POINT} -out tcpsvr://:3503
 ```
-Then set the `input_rtcm` option to `1` in *config/config.yaml* and launch the ros node with:
+Then set the `input_rtcm` option to `1` in *config/driver_config.yaml* and launch the ros node with:
 ```
 roslaunch ublox_driver ublox_driver.launch
 ```
