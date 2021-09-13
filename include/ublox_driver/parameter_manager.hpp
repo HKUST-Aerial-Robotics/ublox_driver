@@ -100,12 +100,20 @@ class ParameterManager
             to_file = driver_config_root["to_file"].As<int>() > 0 ? true : false;
             to_serial = driver_config_root["to_serial"].As<int>() > 0 ? true : false;
             config_receiver_at_start = driver_config_root["config_receiver_at_start"].As<int>() > 0 ? true : false;
-            ubx_filepath = path_rel2abs(driver_config_root["ubx_filepath"].As<std::string>());
-            output_serial_port = driver_config_root["output_serial_port"].As<std::string>();
-            input_serial_port = driver_config_root["input_serial_port"].As<std::string>();
-            serial_baud_rate = driver_config_root["serial_baud_rate"].As<long>();
-            rtcm_tcp_port = driver_config_root["rtcm_tcp_port"].As<uint64_t>();
-            dump_dir = path_rel2abs(driver_config_root["dump_dir"].As<std::string>());
+            if (online)
+            {
+                input_serial_port = driver_config_root["input_serial_port"].As<std::string>();
+                serial_baud_rate = driver_config_root["serial_baud_rate"].As<long>();
+                rtcm_tcp_port = driver_config_root["rtcm_tcp_port"].As<uint64_t>();
+            }
+            else
+            {
+                ubx_filepath = path_rel2abs(driver_config_root["ubx_filepath"].As<std::string>());
+            }
+            if (to_serial)
+                output_serial_port = driver_config_root["output_serial_port"].As<std::string>();
+            if (to_file)
+                dump_dir = path_rel2abs(driver_config_root["dump_dir"].As<std::string>());
             rtk_correction_ecef = parse_matrix(driver_config_root["rtk_correction_ecef"]).topLeftCorner<3, 1>();
             if (online && config_receiver_at_start)
             {
