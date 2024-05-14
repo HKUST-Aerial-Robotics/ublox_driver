@@ -1004,7 +1004,7 @@ int UbloxMessageProcessor::decode_GPS_subframe(const uint8_t *msg_data, const ui
     
     // now set bits to subframe buffer
     for (size_t i = 0; i < 10; i++)
-        setbitu(subfrm[ephem->sat]+subframe_pos, 24*i, 24, words[i]);
+        setbitu(subfrm[ephem->sat-1]+subframe_pos, 24*i, 24, words[i]);
     
     if (subframe_id == 3)
         decode_GPS_ephem(ephem);
@@ -1013,7 +1013,7 @@ int UbloxMessageProcessor::decode_GPS_subframe(const uint8_t *msg_data, const ui
 
 int UbloxMessageProcessor::decode_GPS_ephem(EphemPtr ephem)
 {
-    uint8_t *frame_buf = subfrm[ephem->sat];
+    uint8_t *frame_buf = subfrm[ephem->sat-1];
     // check if subframe1,2,3 are received or not
     for (uint32_t i = 0; i < 3; ++i)
     {
